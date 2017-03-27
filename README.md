@@ -5,6 +5,20 @@ newVPS是一个自动配置VPS的脚本。
 * 可以选择需要安装的软件，然后自动安装aria、lighttpd、shadowsocks、resilio sync等软件
 * 可以选择需要开机自启动的软件，开机自启动
 
+## Attention
+
+使用newVPS需要进入`newVPS`目录，更改`setupVPS.sh`的权限：
+
+```
+sudo chmod +x setupVPS.sh
+```
+
+然后使用`sudo`权限运行：
+
+```
+sudo ./setupVPS.sh
+```
+
 ## Features
 
 * aira：VPS自动下载bt、磁力、网址

@@ -82,7 +82,8 @@ then
 	sudo echo "\"fast_open\":false," >> /etc/shadowsocks/shadowsocks.json
 	sudo echo "}" >> /etc/shadowsocks/shadowsocks.json
 
-	sudo nohup ssserver -c /etc/shadowsocks/shadowsocks.json start > shadowsocks.out 2>&1 &
+	sudo mkdir -p ${HOME_DIR}/application/shadowsocks
+	sudo nohup ssserver -c /etc/shadowsocks/shadowsocks.json start > ${HOME_DIR}/application/shadowsocks/shadowsocks.out 2>&1 &
 fi
 
 # 安装git
