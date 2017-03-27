@@ -1,6 +1,7 @@
 #!/bin/sh
 #-----------------------需要更改部分-----------------------#
 # 安装的用户目录
+BOOT_START=true		# 开机是否自启
 HOME_DIR="/home/ubuntu"
 MY_IP="192.168.30.110"
 
@@ -14,7 +15,9 @@ HTOP=true
 SCREENFETCH=true
 RESILIO_SYNC=true
 SHADOWSOCKS=true
-
+GIT=true
+ZIP=true
+ZIPROXY=false
 #-----------------------请勿更改部分-----------------------#
 # 初始化
 sudo apt update
@@ -80,4 +83,33 @@ then
 	sudo echo "}" >> /etc/shadowsocks/shadowsocks.json
 
 	sudo nohup ssserver -c /etc/shadowsocks/shadowsocks.json start > shadowsocks.out 2>&1 &
+fi
+
+# 安装git
+if "$GIT" = true;
+then
+	sudo apt install git -y
+fi
+
+# 安装zip
+if "$ZIP" = true;
+then
+	sudo apt install zip -y
+fi
+
+# 安装Ziproxy
+if "$ZIPROXY" = true;
+then
+	sudo apt-get install ziproxy -y
+fi
+
+# 配置开启自启
+if "$BOOT_START" = true;
+then
+	sudo mkdir -p ${HOME_DIR}/application/init
+	sudo cp ${HOME_DIR}/newVPS/init/init.sh ${HOME_DIR}/application/init
+	sudo chmod +x ${HOME_DIR}/application/init/init.sh
+	sudo sed -i "s/exit 0/\n/g" /etc/rc.local
+	sudo echo "${HOME_DIR}/application/init/init.sh" >> /etc/rc.local
+	sudo echo "exit 0" >> /etc/rc.local
 fi

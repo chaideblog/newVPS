@@ -11,6 +11,9 @@ newVPS是一个自动配置VPS的脚本。
 * lighttpd：http下载VPS上的资源
 * shadowsocks：科学合理上网
 * resilio sync：将VPS作为网盘，上传下载文件
+* git：管理git仓库
+* zip：压缩、解压文件
+* ziproxy：省流量代理
 
 ## Contact
 
