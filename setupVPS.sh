@@ -22,3 +22,10 @@ sudo apt install htop
 
 # 安装screenfetch
 sudo apt install screenfetch -y
+
+# 安装Resilio Sync
+sudo mkdir -p ~/application/resilio_sync
+sudo cp ~/newVPS/resilio_sync/resilio-sync_x64.tar ~/application/resilio_sync
+cd ~/application/resilio_sync
+sudo tar xvf resilio-sync_x64.tar
+sudo ~/application/resilio_sync/.rslsync --webui.listen 0.0.0.0:8888
