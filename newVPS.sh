@@ -16,3 +16,9 @@ echo "\n"
 sudo apt-get install lighttpd -y
 sudo cp ~/newVPS/lighttpd/lighttpd.conf /etc/lighttpd/
 sudo service lighttpd restart
+
+# 安装htop
+sudo apt install htop
+
+# 安装screenfetch
+sudo apt install screenfetch -y
