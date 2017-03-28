@@ -137,7 +137,7 @@ then
 	echo "HOME_PATH=\"${HOME_PATH}\"		# 安装的用户目录" >> ${HOME_PATH}/application/init/init.sh
 	echo "RESILIO_SYNC_PORT=${RESILIO_SYNC_PORT}" >> ${HOME_PATH}/application/init/init.sh
 
-	sudo cat ${HOME_PATH}/newVPS/init/init.sh ${HOME_PATH}/application/init/init.sh
+	sudo cat ${HOME_PATH}/newVPS/init/init.sh >> ${HOME_PATH}/application/init/init.sh
 	sudo chmod +x ${HOME_PATH}/application/init/init.sh
 	sudo sed -i "s#exit 0#\n#g" /etc/rc.local
 	sudo echo "${HOME_PATH}/application/init/init.sh" >> /etc/rc.local
