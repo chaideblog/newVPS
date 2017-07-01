@@ -29,6 +29,4 @@ sudo ./setupVPS.sh
 * zip：压缩、解压文件
 * ziproxy：省流量代理
 
-## Contact
 
-邮箱：<a href="mailto:chai_jinlong@163.com">chai_jinlong@163.com</a>
