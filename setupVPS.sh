@@ -2,8 +2,8 @@
 #-----------------------需要更改部分-----------------------#
 # 安装的用户目录
 BOOT_START=true		# 开机是否自启
-HOME_PATH="/home/ubuntu"		# 安装的用户目录
-MY_IP="192.168.30.110"		# 主机的ip地址
+HOME_PATH="/home"		# 安装的用户目录
+MY_IP="192.168.1.1"		# 主机的ip地址
 
 # 需要安装的软件，true安装
 ARIA2=true
@@ -15,12 +15,13 @@ SHADOWSOCKS=true
 GIT=true
 ZIP=true
 ZIPROXY=false
+APACHE2=true
 #-----------------------软件配置部分-----------------------#
 # aira
 ARIA_FILE_SAVE_PATH="${HOME_PATH}/download"
 ARIA_PORT="6800"
-ARIA_USERNAME="tencent"
-ARIA_PASSWD="ariapassword"
+ARIA_USERNAME="username"
+ARIA_PASSWD="password"
 
 # lighttpd
 LIGHTTPD_PORT="8008"
@@ -29,7 +30,7 @@ LIGHTTPD_USERNAME="www-data"
 LIGHTTPD_GROUPNAME="www-data"
 
 # shadowsocks
-SHADOWSOCKS_PASSWD="123456"
+SHADOWSOCKS_PASSWD="password"
 SHADOWSOCKS_PORT="8388"
 
 # resilio sync
@@ -103,9 +104,10 @@ then
 	sudo echo "\"password\":\"${SHADOWSOCKS_PASSWD}\"," >> /etc/shadowsocks/shadowsocks.json
 	sudo echo "\"timeout\":300," >> /etc/shadowsocks/shadowsocks.json
 	sudo echo "\"method\":\"aes-256-cfb\"," >> /etc/shadowsocks/shadowsocks.json
-	sudo echo "\"fast_open\":false," >> /etc/shadowsocks/shadowsocks.json
+	sudo echo "\"fast_open\":false" >> /etc/shadowsocks/shadowsocks.json
 	sudo echo "}" >> /etc/shadowsocks/shadowsocks.json
 
+	sudo chmod 777 /etc/shadowsocks/shadowsocks.json
 	sudo mkdir -p ${HOME_PATH}/application/shadowsocks
 	sudo nohup ssserver -c /etc/shadowsocks/shadowsocks.json start > ${HOME_PATH}/application/shadowsocks/shadowsocks.out 2>&1 &
 fi
@@ -126,6 +128,12 @@ fi
 if "$ZIPROXY" = true;
 then
 	sudo apt-get install ziproxy -y
+fi
+
+# 安装Apache2
+if "$APACHE2" = true;
+then
+	sudo apt install apache2 -y
 fi
 
 # 配置开启自启

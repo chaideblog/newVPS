@@ -7,7 +7,7 @@ newVPS是一个自动配置VPS的脚本。
 
 ## Attention
 
-使用newVPS需要进入`newVPS`目录，更改`setupVPS.sh`的权限：
+将newVPS目录放到`/home`目录下，进入`newVPS`目录，更改`setupVPS.sh`的权限：
 
 ```
 sudo chmod +x setupVPS.sh
